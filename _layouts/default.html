@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <title>{{page.title}} | {{site.name}}</title>
+
+    <link rel="shortcut icon"
+          type="image/x-icon"
+          href="/favicon.ico?"></link>
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css"></link>
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
+  <body>
+    <div class="all">
+      <div class="heading">
+        <div class="brand"><a href="/">
+          <img src="/images/bonsai-tree.png"></img> 
+          <h1>{{site.name}}</h1>
+        </a></div>
+        {% include call-us.html %}
+      </div>
+      <nav class="menu">
+        <ul>
+          {% assign pages = site.pages | sort:"nav-order"  %}
+          {% for p in pages %}
+          <li {% if p.title == page.title %}class="active"{% endif %}>
+            <a href="{{ p.nav-url }}">{{p.title}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <div class="content">
+        {{ content }}
+      </div>
+      <div class="footer">
+        {% include footer.html %} 
+      </div>
+    </div>
+  </body>
+</html>
